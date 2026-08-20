@@ -5,9 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aman Telecom - Smartphone Repairs & Accessories</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Site Switcher Component Styles */
+        .site-switch-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .switch-label {
+            color: #ffffff;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .switch-label.active {
+            color: #25D366;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 22px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #555;
+            transition: 0.3s;
+            border-radius: 22px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #25D366;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(22px);
+        }
+    </style>
 </head>
 <body>
-
     <header>
         <nav>
             <div class="logo">
@@ -17,6 +81,17 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#repair-form">Book Repair</a></li>
                 <li><a href="#contact">Contact Us</a></li>
+                <!-- Site Switcher Toggle -->
+                <li>
+                    <div class="site-switch-container">
+                        <span class="switch-label active">Main Site</span>
+                        <label class="switch">
+                            <input type="checkbox" id="site-toggle" onchange="toggleSite(this)">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="switch-label">Shop</span>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -31,31 +106,26 @@
     <div class="container" id="services">
         <h2 class="section-title">Our Services</h2>
         <div class="services-grid">
-            
             <div class="card">
                 <div class="icon">🛠️</div>
                 <h3>Mobile Repairs</h3>
                 <p>Fast and reliable repair for screens, batteries, charging ports, and hardware issues.</p>
             </div>
-
             <div class="card">
                 <div class="icon">💻</div>
                 <h3>Software Solutions</h3>
                 <p>OS updating, flashing, pattern & FRP unlock, data backup, recovery, and malware removal.</p>
             </div>
-
             <div class="card">
                 <div class="icon">🎧</div>
                 <h3>Accessories</h3>
                 <p>Quality chargers, earphones, back covers, tempered glass, and bluetooth audio.</p>
             </div>
-
             <div class="card">
                 <div class="icon">⚡</div>
                 <h3>Recharges & Payments</h3>
                 <p>Instant mobile recharges, DTH top-ups, and utility bill payments.</p>
             </div>
-
         </div>
     </div>
 
@@ -133,6 +203,12 @@
     </footer>
 
     <script>
+        function toggleSite(checkbox) {
+            if (checkbox.checked) {
+                window.location.href = "./shop/";
+            }
+        }
+
         function addSuggestion(text) {
             const textarea = document.getElementById('issue');
             if (textarea.value.trim() === '') {
@@ -142,6 +218,5 @@
             }
         }
     </script>
-
 </body>
 </html>
