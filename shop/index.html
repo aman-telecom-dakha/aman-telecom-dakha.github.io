@@ -130,13 +130,18 @@
         }
 
         // Quick order tracking helper
-        function trackOrder(e) {
-            e.preventDefault();
-            const orderVal = document.getElementById('order-id').value;
-            const resultDiv = document.getElementById('tracking-result');
-            resultDiv.style.color = "#25D366";
-            resultDiv.innerHTML = "Fetching details for <strong>" + orderVal + "</strong>... Please check WhatsApp for real-time updates!";
-        }
+      function trackOrder(e) {
+    e.preventDefault();
+    const orderVal = document.getElementById('order-id').value.trim();
+    if (!orderVal) return;
+
+    // Send customer directly to your WhatsApp with pre-filled Order ID
+    const message = encodeURIComponent(`Hi Aman Telecom, I want to track my order: ${orderVal}`);
+    const whatsappUrl = `https://wa.me/917657998779?text=${message}`;
+    
+    // Open WhatsApp in a new tab
+    window.open(whatsappUrl, '_blank');
+}
     </script>
 </body>
 </html>
