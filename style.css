@@ -384,3 +384,105 @@ footer {
     .nav-links { display: none; }
     .form-card { padding: 1.5rem; }
 }
+/* ==========================================
+   Site Switcher Toggle Styling
+   ========================================== */
+.site-switch-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 6px 16px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 12px rgba(37, 211, 102, 0.2);
+    position: relative;
+}
+
+/* Eye-Catching Pulsing Badge */
+.site-switch-container::before {
+    content: "ONLINE STORE";
+    position: absolute;
+    top: -12px;
+    right: 15px;
+    background: #ff4757;
+    color: white;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: pulse-badge 1.8s infinite;
+}
+
+.switch-label {
+    color: #e0e0e0;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.switch-label.active {
+    color: #25D366;
+    text-shadow: 0 0 8px rgba(37, 211, 102, 0.4);
+}
+
+/* Larger Toggle Housing */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 58px;
+    height: 30px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Track Styles */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #4a4a4a;
+    transition: 0.3s;
+    border-radius: 30px;
+}
+
+/* Knob Styles */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Active State (ON) */
+input:checked + .slider {
+    background-color: #25D366;
+}
+
+input:checked + .slider:before {
+    transform: translateX(28px);
+}
+
+/* Continuous Pulse Animation */
+@keyframes pulse-badge {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
