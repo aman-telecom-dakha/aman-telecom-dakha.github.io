@@ -122,20 +122,20 @@
     </footer>
 
     <script>
-        // Switcher redirect back to root main site
+        // Redirect back to root main site when toggle is switched OFF
         function toggleSite(checkbox) {
             if (!checkbox.checked) {
                 window.location.href = "../index.html";
             }
         }
 
-        // Simple helper for quick order status check
+        // Quick order tracking helper
         function trackOrder(e) {
             e.preventDefault();
             const orderVal = document.getElementById('order-id').value;
             const resultDiv = document.getElementById('tracking-result');
             resultDiv.style.color = "#25D366";
-            resultDiv.innerHTML = "Fetching order details for <strong>" + orderVal + "</strong>... Please check WhatsApp for real-time updates!";
+            resultDiv.innerHTML = "Fetching details for <strong>" + orderVal + "</strong>... Please check WhatsApp for real-time updates!";
         }
     </script>
 </body>
